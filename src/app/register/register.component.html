@@ -1,0 +1,73 @@
+
+<div class="medium-list">
+    <div class="list-viwer-wrapper">
+        <div class="list-header-title">Register</div>
+        <form [formGroup]="registerform">
+        <div class="form-container">
+        <mat-form-field>
+            <input
+               matInput
+               formControlName="name"
+               [(ngModel)]="user.name"
+               placeholder="Enter your name"
+            />
+          <mat-error *ngIf="registerform.get('email').errors?.required">
+            Name is Required
+          </mat-error>  
+        </mat-form-field>
+        <mat-form-field>
+            <input
+               matInput
+               formControlName="email"
+               [(ngModel)]="user.email"
+               placeholder="Enter your email"
+            />
+            <mat-error *ngIf="registerform.get('email').errors?.required">
+            Email is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" >
+            <mat-label>Choes date</mat-label> 
+            <input matInput [matDatepicker]="picker" 
+            placeholder="Choose a date" 
+            formControlName="date"
+            [(ngModel)]="user.date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="registerform.get('date').errors?.required">
+             Date is required
+            </mat-error>
+         </mat-form-field>
+         <mat-form-field>  
+          <mat-label>Role</mat-label>
+          <mat-select formControlName="role"
+          [(ngModel)]="user.role">
+            <mat-option value="0">Tpo</mat-option>
+            <mat-option value="1">Admin</mat-option>
+          </mat-select>
+          <mat-error *ngIf="registerform.get('role').errors?.required">
+             Role is required
+          </mat-error>
+          </mat-form-field>
+        <mat-form-field>
+            <input
+               matInput
+               formControlName="password"
+               [(ngModel)]="user.password"
+               placeholder="Enter your password"
+               [type]="hide? 'password':'text'"
+            />
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="registerform.get('password').errors?.required">
+                    Password is required
+                  </mat-error>
+        </mat-form-field>
+         
+        <button mat-button type="submit" class="mat-raised-button mat-primary" [disabled]="!registerform.valid"(click)="Submit()">Register</button>
+        <button mat-button routerLink="/login" class="divider">Login</button>
+       </div>   
+      </form>
+    </div>
+</div>

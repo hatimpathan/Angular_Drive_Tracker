@@ -1,0 +1,36 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 125px;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+.spacer{
+  flex-grow: 2;
+}
+
+
+.sticky {
+  background: #fff;
+  box-shadow: 0 3px 12px 0 rgba(0,0,0,.08);
+  position: fixed;
+  top: 0;
+  height: 120px;
+  width: 100%;
+}
+
+.app-toolbar{
+  position: sticky;
+  position: -webkit-sticky;
+  top:0;
+  z-index: 1000;
+}

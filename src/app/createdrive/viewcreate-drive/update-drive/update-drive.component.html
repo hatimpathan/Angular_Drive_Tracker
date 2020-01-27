@@ -1,0 +1,124 @@
+<h2 mat-dialog-title>UPDATE-DRIVE</h2>
+<mat-dialog-content fxLayoutAlign="center"class="mat-typography">
+    <div class="medium-list">
+        <div class="list-viwer-wrapper">
+          <div class="list-header-title">Student Drive Form</div>
+          <form [formGroup]="driveform">
+            <div class="form-container">
+              <mat-form-field appearance="fill">  
+                <mat-label>ID</mat-label>
+                <input matInput
+                  formControlName="id" readonly
+                  [(ngModel)]="data.id">
+                 <mat-error *ngIf="driveform.get('id').errors?.required">
+                    comapny name is required
+                 </mat-error>
+                </mat-form-field>
+            <mat-form-field appearance="fill">  
+              <mat-label>Company Name</mat-label>
+              <input matInput
+                formControlName="companyname"
+                [(ngModel)]="data.companyname"
+                >
+               <mat-error *ngIf="driveform.get('companyname').errors?.required">
+                  comapny name is required
+               </mat-error>
+              </mat-form-field>
+             <mat-form-field appearance="fill">
+                <mat-label>No.of Resources </mat-label>
+             <input matInput  
+             formControlName="resource"
+             [(ngModel)]="data.resource">
+                <mat-error *ngIf="driveform.get('resource').errors?.required">
+                     Resource is required
+               </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Exp Required</mat-label>
+              <input matInput
+               formControlName="exp"
+               [(ngModel)]="data.exp"
+               >
+              <mat-error *ngIf="driveform.get('exp').errors?.required">
+              Exprience is required
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+               <mat-label>CTC</mat-label>
+               <input matInput 
+                formControlName="ctc"
+                [(ngModel)]="data.ctc">
+               <mat-error *ngIf="driveform.get('ctc').errors?.required">
+                 ctc is required
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                 <mat-label>Select Position</mat-label>
+                 <select formControlName="position" 
+                 [(ngModel)]="data.position" matNativeControl required>
+                 <option value="0" >Full stack Developer</option>
+                 <option value="1" >Ui Developer</option>
+                 <option value="2" >Middleware/Backend Developer</option>
+                 <option value="3" >Testing Engineer</option>
+                 </select>
+            <mat-error *ngIf="driveform.get('position').errors?.required">
+                  Position is required
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Select Joining Criteria</mat-label>
+                <select formControlName="joining"
+                [(ngModel)]="data.joining"matNativeControl required>
+                <option value="0">NO training direct joining</option>
+                <option value="1">3 month Internship then joining</option>
+              </select>
+              <mat-error *ngIf="driveform.get('joining').errors?.required">
+                   Joining field is required
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>  
+              <mat-label>Education Criteria</mat-label>
+              <select formControlName="education" 
+               [(ngModel)]="data.education"
+               matNativeControl required>
+                <option value="0">BE</option>
+                <option value="1">12TH</option>
+                <option value="2">Other</option>
+              </select>
+              <mat-error *ngIf="driveform.get('education').errors?.required">
+                 Education is required
+              </mat-error>
+              </mat-form-field>            
+              <mat-form-field appearance="fill" >
+                 <mat-label>Followup</mat-label> 
+                 <input matInput [matDatepicker]="picker" 
+                 placeholder="Choose a date" 
+                 formControlName="followup"
+                 [(ngModel)]="data.followup">
+                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                 <mat-datepicker #picker></mat-datepicker>
+                 <mat-error *ngIf="driveform.get('followup').errors?.required">
+                  Followup is required
+                 </mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                 <mat-label>Bond</mat-label>
+                 <select formControlName="bond"
+                     [(ngModel)]="data.bond"
+                     matNativeControl required>
+                  <option value="0">1 year</option>
+                  <option value="1">2 year</option>
+                </select>
+                <mat-error *ngIf="driveform.get('bond').errors?.required">
+                 Bond is required
+              </mat-error>        
+              </mat-form-field>
+                    <button type="submit" mat-raised-button color="primary"(click)="submit()" [disabled]='!driveform.valid'>Update</button>
+           </div>
+          </form> 
+        </div>
+      </div>  
+ </mat-dialog-content>
+<mat-dialog-actions align="end">
+<button mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Cancel</button>
+</mat-dialog-actions>
